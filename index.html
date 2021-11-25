@@ -29,16 +29,22 @@
                 <div class="escolha">
                     <p class="titulo">Escolha o modelo</p>
                     <div class="opcoes">
-                        <div class="item">
-                            <img src="/assets/tshirt.png">
+                        <div class="item" onclick="selecionarModelo(this)">
+                            <div class="circulo modelo">
+                                <img src="/assets/tshirt.png">
+                            </div>
                             <p class="titulo">T-shirt</p>
                         </div>
-                        <div class="item">
-                            <img src="/assets/Camiseta.png">
+                        <div class="item" onclick="selecionarModelo(this)">
+                            <div class="circulo modelo">
+                                <img src="/assets/Camiseta.png">
+                            </div>
                             <p class="titulo">Camiseta</p>
                         </div>
-                        <div class="item">
-                            <img src="/assets/Mangalonga.png">
+                        <div class="item" onclick="selecionarModelo(this)">
+                            <div class="circulo modelo">
+                                <img src="/assets/Mangalonga.png">
+                            </div>
                             <p class="titulo">Manga longa</p>
                         </div>
                     </div>                  
@@ -46,16 +52,22 @@
                 <div class="escolha">
                     <p class="titulo">Escolha a gola</p>
                     <div class="opcoes">
-                        <div class="item">
-                            <img src="/assets/GolaV.png">
+                        <div class="item" onclick="selecionarGola(this)">
+                            <div class="circulo gola">
+                                <img src="/assets/GolaV.png">
+                            </div>
                             <p class="titulo">Gola V</p>
                         </div>
-                        <div class="item">
-                            <img src="/assets/GolaRedonda.png">
+                        <div class="item" onclick="selecionarGola(this)">
+                            <div class="circulo gola">
+                                <img src="/assets/GolaRedonda.png">
+                            </div>
                             <p class="titulo">Gola Redonda</p>
                         </div>
-                        <div class="item">
-                            <img src="/assets/GolaPolo.png">
+                        <div class="item" onclick="selecionarGola(this)">
+                            <div class="circulo gola">
+                                <img src="/assets/GolaPolo.png">
+                            </div>
                             <p class="titulo">Gola polo</p>
                         </div>
                     </div>  
@@ -63,16 +75,22 @@
                 <div class="escolha">
                     <p class="titulo">Escolha o tecido</p>
                     <div class="opcoes">
-                        <div class="item">
-                            <img src="/assets/Seda.png">
+                        <div class="item" onclick="selecionarTecido(this)">
+                            <div class="circulo tecido">
+                                <img src="/assets/Seda.png">
+                            </div>
                             <p class="titulo">Seda</p>
                         </div>
-                        <div class="item">
-                            <img src="/assets/Algodão.png">
+                        <div class="item" onclick="selecionarTecido(this)">
+                            <div class="circulo tecido">
+                                <img src="/assets/Algodão.png">
+                            </div>
                             <p class="titulo">Algodão</p>
                         </div>
-                        <div class="item">
-                            <img src="/assets/Poliester.png">
+                        <div class="item" onclick="selecionarTecido(this)">
+                            <div class="circulo tecido">
+                                <img src="/assets/Poliester.png">
+                            </div>
                             <p class="titulo">Poliéster</p>
                         </div>
                     </div>  
@@ -80,7 +98,7 @@
 
                 <div class="img-referencia">
                     <p class="titulo">Imagem de referência</p>
-                    <input type="text" placeholder="Insira o link">
+                    <input type="text" class="url-imagem" placeholder="Insira o link">
                 </div>
 
                 <button class="confirmar-pedido"><span class="botao">Confirmar pedido</span></button>
