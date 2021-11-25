@@ -30,10 +30,6 @@ section {
     align-items: center;
 }
 
-.titulo {
-
-}
-
 .opcoes {
     width: 402px;
     display: flex;
@@ -41,9 +37,19 @@ section {
     
 }
 
+.item {
+    margin-top: 10px;
+    margin-bottom: 32px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .circulo {
     width: 100px;
     height: 100px;
+    margin-bottom: 8px;
     background-color: #F2F2F2;
     border-radius: 50%;
     
@@ -52,11 +58,20 @@ section {
     align-items: center;
 }
 
+.titulo {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21.09px;
+}
+
 input {
     width: 398px;
     height: 40px;
     padding-left: 16px;
+    margin-top: 10px;
+    margin-bottom: 24px;
     border-radius: 10px;
+    border: none;
     background-color: #F2F2F2;
 }
 
@@ -64,6 +79,7 @@ button {
     width: 398px;
     height: 40px;
     border-radius: 10px;
+    border: none;    
     background-color: #C4C4C4;
 }
 
@@ -73,8 +89,6 @@ button {
     line-height: 23.44px;
     color: #FCFCFC;
 }
-
-
 
 .banner {
     width: 670px;
@@ -86,6 +100,10 @@ button {
     align-items: center;
 }
 
+.clicavel {
+    background-color: #404EED;
+}
+
 footer {
     width: 100%;
     height: 342px;
@@ -93,6 +111,21 @@ footer {
     padding-right: 184px;
     padding-top: 30px;
     background-color: #F2F2F2;
+}
+
+.recente {
+    width: 202px;
+    height: 236px;
+    padding-bottom: 10px;
+    padding-top: 16px;
+    border-radius: 10px;
+    margin-top: 16px;
+    background-color: #fff;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .pedidos {
