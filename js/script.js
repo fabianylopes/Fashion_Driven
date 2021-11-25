@@ -1,6 +1,6 @@
 let cont = 0;
 
-let modelo;
+let modelo = "shirt";
 let gola;
 let tecido;
 
@@ -18,11 +18,23 @@ function selecionarModelo(item) {
         cont++;
     }
 
-    modelo = "blusa"
+    // let texto = item.innerText;
 
+    // if(texto === "Manga longa"){
+    //     modelo = "long";
+    // }else if(texto === "Camiseta"){
+    //     modelo = "top-tank";
+    // }else if(texto === "T-shirt"){
+    //     modelo = "t-shirt";
+    // }
+    
+    //console.log(texto);
+    
     marcado.classList.add("selecionado");
     verificarPedido();
 }
+
+//console.log(modelo);
 
 function selecionarGola(item) {
     const marcado = item.querySelector(".circulo");
@@ -76,7 +88,7 @@ function verificarPedido() {
 
 
 function confirmarPedido(){
-    const promessa = axis.post('https://mock-api.driven.com.br/api/v4/shirts-api/shirts',
+    const promessa = axios.post('https://mock-api.driven.com.br/api/v4/shirts-api/shirts',
     {
         model: modelo,
         neck: gola,
@@ -97,6 +109,7 @@ function confirmada() {
     alert("Encomenda Confirmada!");
 }
 
-function naoConfirmada() {
+function naoConfirmada(erro) {
     alert("Ops, não conseguimos processar sua encomenda");
+console.log(erro);
 }
