@@ -1,10 +1,8 @@
 let cont = 0;
 
-let modelo;
-let gola;
-let tecido;
-
-let urlImagem = "https://cdn.awsli.com.br/600x450/527/527197/produto/57202884/777181a5fd.jpg";
+let modelo = "";
+let gola = "";
+let tecido = "";
 
 let nome = prompt("Qual o seu lindo nome? ");
 
@@ -17,7 +15,6 @@ function selecionarModelo(item) {
     }else{
         cont++;
     }
-
     
     if(item.innerText === "Manga Longa"){
         modelo = "long";
@@ -83,23 +80,15 @@ function verificarPedido() {
 }
 
 
-// function validarImagem() {
-    
-//     urlImagem = document.querySelector(".url-imagem").value;
-
-// }
-
-// function confirmarPedido() {
-// }
-
-
 function confirmarPedido(){
+    const url = document.querySelector("input");
+
     const promessa = axios.post('https://mock-api.driven.com.br/api/v4/shirts-api/shirts',
     {
         model: modelo,
         neck: gola,
         material: tecido,
-        image: urlImagem,
+        image: url.value,
         owner: nome,
         author: nome
     }
@@ -114,9 +103,8 @@ function confirmada() {
     mostrarRecentes();
 }
 
-function naoConfirmada(erro) {
+function naoConfirmada() {
     alert("Ops, não conseguimos processar sua encomenda");
-console.log(erro);
 }
 
 function mostrarRecentes() {
@@ -132,11 +120,22 @@ function ultimosPedidos(resposta) {
 
     for(let i = 0; i < 5; i++){
         recentes.innerHTML += `
-        <div class="recente">
-            <img src="${dados.image}">
-            <div class="legenda"><span class="bold">Criador: </span>${dados.owner}</div>
+        <div class="recente" onclick="fazerPedido()">
+            <img src="${dados[i].image}">
+            <div class="legenda"><span class="bold">Criador: </span>${dados[i].owner}</div>
         </div>
         `
     }
     console.log(resposta);
+}
+
+mostrarRecentes();
+
+function fazerPedido() {
+    let mensagem = "Deseja confirmar este pedido?";
+    resultado = window.confirm(mensagem);
+
+    if(resultado){
+        confirmarPedido();
+    }
 }

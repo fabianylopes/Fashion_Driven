@@ -129,6 +129,11 @@ footer {
     justify-content: space-between;
 }
 
+.recente img{
+    width: 70%;
+    height: 80%;
+}
+
 .pedidos {
     font-size: 24px;
     font-weight: 400;
