@@ -72,17 +72,33 @@ function selecionarTecido(item) {
     verificarPedido();
 }
 
+let botao = document.querySelector("button");
+botao.disabled = true;
+
 function verificarPedido() {
-    if(cont === 3){
-        const botao = document.querySelector(".confirmar-pedido");
-        botao.classList.add("clicavel")
+    const url = document.querySelector("input");
+
+    if(cont === 3 && validarURL(url.value)){
+        const button = document.querySelector(".confirmar-pedido");
+        button.classList.add("clicavel");
+        botao.disabled = false;
     }
 }
 
 
+function validarURL(url){
+    let RegExp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+
+    if(RegExp.test(url)){
+        return true;
+    }else{
+        return false;
+    }
+} 
+
 function confirmarPedido(){
     const url = document.querySelector("input");
-
+    
     const promessa = axios.post('https://mock-api.driven.com.br/api/v4/shirts-api/shirts',
     {
         model: modelo,
@@ -120,22 +136,38 @@ function ultimosPedidos(resposta) {
 
     for(let i = 0; i < 5; i++){
         recentes.innerHTML += `
-        <div class="recente" onclick="fazerPedido()">
+        <div class="recente" onclick="fazerPedido(${dados[i]})">
             <img src="${dados[i].image}">
             <div class="legenda"><span class="bold">Criador: </span>${dados[i].owner}</div>
         </div>
         `
     }
-    console.log(resposta);
 }
 
 mostrarRecentes();
 
-function fazerPedido() {
+function fazerPedido(camisa) {
     let mensagem = "Deseja confirmar este pedido?";
     resultado = window.confirm(mensagem);
+    console.log(camisa);
 
     if(resultado){
-        confirmarPedido();
+        escolherPronta(camisa);
     }
+}
+
+function escolherPronta(camisa) {
+    const promessa = axios.post('https://mock-api.driven.com.br/api/v4/shirts-api/shirts',
+    {
+        model: camisa.model,
+        neck: camisa.neck,
+        material: camisa.material,
+        image: camisa.image,
+        owner: nome,
+        author: camisa.author
+    }
+    );
+
+    promessa.then(confirmada);
+    promessa.catch(naoConfirmada);
 }

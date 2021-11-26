@@ -132,6 +132,7 @@ footer {
 .recente img{
     width: 70%;
     height: 80%;
+    object-fit: cover;
 }
 
 .pedidos {
