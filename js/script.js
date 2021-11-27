@@ -4,6 +4,8 @@ let modelo = "";
 let gola = "";
 let tecido = "";
 
+let dados;
+
 let nome = prompt("Qual o seu lindo nome? ");
 
 function selecionarModelo(item) {
@@ -85,11 +87,10 @@ function verificarPedido() {
     }
 }
 
-
 function validarURL(url){
-    let RegExp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+    let link = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
 
-    if(RegExp.test(url)){
+    if(link.test(url)){
         return true;
     }else{
         return false;
@@ -115,7 +116,7 @@ function confirmarPedido(){
 }
 
 function confirmada() {
-    alert("Encomenda Confirmada!");
+    alert("Pedido Confirmado!");
     mostrarRecentes();
 }
 
@@ -131,12 +132,12 @@ function mostrarRecentes() {
 function ultimosPedidos(resposta) {
     const recentes = document.querySelector(".ultimos-pedidos");
     recentes.innerHTML = "";
-
-    let dados = resposta.data;
-
+    
+    dados = resposta.data;
+    
     for(let i = 0; i < 5; i++){
         recentes.innerHTML += `
-        <div class="recente" onclick="fazerPedido(${dados[i]})">
+        <div class="recente" onclick="fazerPedido(${i})">
             <img src="${dados[i].image}">
             <div class="legenda"><span class="bold">Criador: </span>${dados[i].owner}</div>
         </div>
@@ -149,22 +150,23 @@ mostrarRecentes();
 function fazerPedido(camisa) {
     let mensagem = "Deseja confirmar este pedido?";
     resultado = window.confirm(mensagem);
-    console.log(camisa);
-
+    
     if(resultado){
         escolherPronta(camisa);
     }
 }
 
-function escolherPronta(camisa) {
+function escolherPronta(i) {
+    const camisa = dados[i];
+
     const promessa = axios.post('https://mock-api.driven.com.br/api/v4/shirts-api/shirts',
     {
         model: camisa.model,
         neck: camisa.neck,
         material: camisa.material,
         image: camisa.image,
-        owner: nome,
-        author: camisa.author
+        owner: camisa.owner,
+        author: nome
     }
     );
 
